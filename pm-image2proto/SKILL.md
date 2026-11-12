@@ -312,7 +312,7 @@ Keep it factual and brief. The user wants a record they can share with their tea
 
 本 Skill 是 pm-skills 工作流的一环，由 `pm-master` 总控统一路由。
 
-- **上游**：`pm-prd-writer`（PRD 的界面交互描述）、`pm-image2pencil`（要设计稿而非可运行原型时用它）
-- **下游**：`pm-review-board`（原型可作为评审材料）
+- **上游**：`pm-requirements`（PRD 的界面交互描述）、`pm-image2pencil`（要设计稿而非可运行原型时用它）
+- **下游**：`pm-review`（原型可作为评审材料）
 
 交接规则：链路模式下，完成后输出一段「交接摘要」（≤10 行：本步结论 + 下一步所需输入），供下一个 Skill 直接使用。

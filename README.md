@@ -1,49 +1,15 @@
-# Trae 全局 Skills 同步仓库
+# Trae 全局技能同步仓库
 
-本仓库用于在多台电脑之间同步 Trae 的**全局技能目录**（即各机器上的 `~/.trae/skills`）。
-换电脑时克隆本仓库即可直接使用同一套技能，改完推送即可保持一致。
+本目录是 `~/.trae/skills`，整合后有 27 个仓库管理入口，另保留应用管理的 tabbit 软链，共 28 个。
 
-## 目录说明
+14 个 PM 入口按日常任务组织：总控、需求、用户研究、发现、数据、实验、优先级、规划、竞品、战略、增长、评审、沟通、顾问。专业方法放在各入口的 references 中按需读取。
 
-- 每个子目录 = 一个技能，目录名与技能 `SKILL.md` frontmatter 里的 `name` 保持一致
-- 收录内容：第三方技能包（如 pm-skills 系列：`pm-master`、`pm-prd-writer`、`pm-advisor-*`、`pm-method-*` 等）与自建技能
-- 排除内容：`tabbit` 软链、`.DS_Store` 等系统文件（见 `.gitignore`）
+原型分别保留 HTML、Next.js 与 Pencil；Figma、法律草稿、实时投票/Q&A、SQL、模拟数据、简历与技能维护工具保持独立。
 
-## 新电脑首次搭建（只做一次）
+旧名与新入口对应见 `skill-map.json`，总控也有一份参考映射。映射不是运行环境的原生别名机制；重启 Trae 窗口后技能列表更新。
 
-```bash
-cd ~/.trae
-mv skills skills.bak        # 备份原有目录（可选）
-git clone https://github.com/wangjeonggae/skills.git skills
-```
+整合前原文件备份在 `~/.trae/skill-backups/pm-consolidation-*`，备份位于技能目录外，避免旧 SKILL.md 被递归发现。可通过本次交付的 migrate.py 和 state.json 回滚；若后来编辑过，脚本会拒绝覆盖后续修改。
 
-克隆后如需保存凭据，执行一次：
+本地整合没有提交、暂存或推送。要同步到其他电脑，请先审阅 `git status` 与差异，只暂存要提交的具体路径，再按用户明确授权提交和推送。备份目录无需加入技能仓库。
 
-```bash
-git config --global credential.helper osxkeychain
-```
-
-## 日常同步
-
-**本机改了技能后 → 上传：**
-
-```bash
-cd ~/.trae/skills
-git status                  # 先看一眼改了哪些
-git add -A
-git commit -m "update skills"
-git push
-```
-
-**换到另一台电脑 → 拉取：**
-
-```bash
-cd ~/.trae/skills
-git pull
-```
-
-## 注意事项
-
-- **只同步 `skills` 目录**，不要把整个 `~/.trae` 纳入 git（其中包含插件缓存与敏感配置）
-- 多台电脑都改过时，先 `git pull` 再 `git push`，避免冲突
-- GitHub 已不支持密码认证，push 时 `Password` 处需填 **Personal Access Token**，不是登录密码
+只同步 skills，不同步包含令牌的整个 `.trae`；HTTPS 认证使用 PAT。tabbit 与系统杂项仍按原 `.gitignore` 排除。

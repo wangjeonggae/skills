@@ -142,7 +142,7 @@ description: |
 
 本 Skill 是 pm-skills 工作流的一环，由 `pm-master` 总控统一路由。
 
-- **上游**：`pm-prd-writer`（PRD 的界面交互描述）；要可运行 HTML 原型而非设计稿时改用 `pm-image2proto`
-- **下游**：`pm-review-board`（设计稿可作为评审材料）
+- **上游**：`pm-requirements`（PRD 的界面交互描述）；要可运行 HTML 原型而非设计稿时改用 `pm-image2proto`
+- **下游**：`pm-review`（设计稿可作为评审材料）
 
 交接规则：链路模式下，完成后输出一段「交接摘要」（≤10 行：本步结论 + 下一步所需输入），供下一个 Skill 直接使用。
